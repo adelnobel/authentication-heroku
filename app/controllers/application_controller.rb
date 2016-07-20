@@ -35,33 +35,46 @@ protected
     BasicAuthenticationInfo.last['password']
   end
 
+  def authentication_url 
+    username = encode get_authentication_username
+    password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3030/"
+    "http://#{username}:#{password}@nadastore-authentication.herokuapp.com/"
+  end 
+
   def nadastore_url 
     username = encode get_authentication_username
     password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3000/"
     "http://#{username}:#{password}@nadastore.herokuapp.com/"
   end 
 
   def cart_url
     username = encode get_authentication_username
     password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3040/"
     "http://#{username}:#{password}@nadastore-cart.herokuapp.com/"
   end 
   
   def store_url 
     username = encode get_authentication_username
     password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3050/"
     "http://#{username}:#{password}@nadastore-store.herokuapp.com/"
   end 
   
   def review_url 
     username = encode get_authentication_username
     password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3060/"
     "http://#{username}:#{password}@nadastore-review.herokuapp.com/"
   end 
   
   def order_url 
     username = encode get_authentication_username
     password = encode get_authentication_password
+    # "http://#{username}:#{password}@localhost:3070/"
     "http://#{username}:#{password}@nadastore-order.herokuapp.com/"
   end 
 end
+
