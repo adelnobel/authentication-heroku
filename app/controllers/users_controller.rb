@@ -30,8 +30,8 @@ class UsersController < ApplicationController
   end
 
   def login_attempt
-    User.exists?(username: params[:user][:username]) 
-    respond_to do |format|
+    reto = {}
+    if User.exists?(username: params[:user][:username]) 
       salt = get_salt()
       # format.json {  render :json => @authorized_user}
       encrypted_password = (Digest::MD5.hexdigest ( salt + get_pepper() + params[:user][:password].to_s)).to_s
@@ -41,13 +41,9 @@ class UsersController < ApplicationController
         id = tempUser[:id]
         reto = {:id => id, :name => tempUser[:username]}
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :json => reto }
-      else
-        # format.html { render :new }
-        reto = {}
-        format.json { render :json => reto }
       end
     end
+    render :json => reto.to_json
   end
   # POST /users
   # POST /users.json
